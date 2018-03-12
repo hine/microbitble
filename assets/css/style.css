@@ -1,0 +1,30 @@
+<@charset "UTF-8";>
+body {
+}
+button {
+  outline: 0;
+  margin: 5px;
+  width:200px;
+  font-size:24px;
+  text-align:center;
+  padding:8px 0 10px;
+  color: #ffffff;
+  background-color:#49a9d4;
+  border: none;
+  border-radius:5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+#accelerometer {
+  font-size: 24px;
+}
+input[type="text"] {
+  margin: 5px;
+  width:200px;
+  font-size:24px;
+  text-align:center;
+  border: solid 1px #cccccc;
+  border-radius:5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
