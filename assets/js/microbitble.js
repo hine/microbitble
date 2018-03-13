@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 var MicrobitBLE = function() {
   // デバイス情報保持用変数
   this.ble_device = null;
@@ -42,7 +43,7 @@ MicrobitBLE.prototype = {
       return device.gatt.connect();
     })
     .then(server =>{
-      console.log("server", server)
+      console.log("server", server);
       // Promise.allは、全てを並列処理して、全てが終わったら次に進む
       return Promise.all([
         server.getPrimaryService(this.ACCELEROMETERSERVICE_SERVICE_UUID),
@@ -50,7 +51,7 @@ MicrobitBLE.prototype = {
       ]);
     })
     .then(service => {
-      console.log("service", service)
+      console.log("service", service);
       return Promise.all([
         service[0].getCharacteristic(this.ACCELEROMETERPERIOD_CHARACTERISTIC_UUID),
         service[0].getCharacteristic(this.ACCELEROMETERDATA_CHARACTERISTIC_UUID),
@@ -59,7 +60,7 @@ MicrobitBLE.prototype = {
       ]);
     })
     .then(chara => {
-      console.log("ACCELEROMETER:", chara)
+      console.log("ACCELEROMETER:", chara);
       alert("BLE接続が完了しました。");
       var buffer = new Uint8Array(2);
       buffer[0] = this.ACCELEROMETERPERIOD & 255;
@@ -82,7 +83,7 @@ MicrobitBLE.prototype = {
   disconnect: function() {
     if (!this.ble_device || !this.ble_device.gatt.connected) return ;
     this.ble_device.gatt.disconnect();
-    alert("BLE接続を切断しました。")
+    alert("BLE接続を切断しました。");
   },
   onAccelerometerValueChanged: function(event) {
     // ６ｂｙｔｅの値から２ｂｙｔｅずつ切り出す
